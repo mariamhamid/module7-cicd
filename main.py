@@ -25,7 +25,7 @@ def root():
 @app.get("/healtcheck")
 def root():
     return {"status": "Healthcheck is running"}
-
+print("Hello, World!")
 
 
 @app.post("/name")
