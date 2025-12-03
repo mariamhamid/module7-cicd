@@ -2,8 +2,24 @@ name: Module 7 Workflow
 on: [push]
 
 jobs:
-  web:
+  build:
     runs-on: ubuntu-latest
+    
+    services:
+      db:
+        image: postgres:latest
+        environment:
+          POSTGRES_USER: myuser          
+          POSTGRES_PASSWORD: mypassword  
+          POSTGRES_DB: new_db           
+        ports:
+         - "5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U myuser" --health-interval
+    env:
+      DATABASE_URL: "postgresql+psycopg2://myuser:mypassword@localhost:5432/new_db"
+            
+
     steps:
       - uses: actions/checkout@v5
       - name: Set up Python 3.11
