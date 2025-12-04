@@ -20,9 +20,7 @@ RUN python -m pip install --upgrade pip \
 	&& pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the application code (do NOT copy secrets or .env into the image)
-
-# Copy application code
-COPY --exclude=.env . /app
+COPY . /app
 
 # Copy wait-for-db script and make it executable
 COPY wait-for-db.sh /app/wait-for-db.sh
