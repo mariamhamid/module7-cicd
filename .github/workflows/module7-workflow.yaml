@@ -65,5 +65,6 @@ deploy:
         run: |
           echo "Deploying application..."
           # add command to deploy on azure app service
+          --restart true
           #docker run -d -p 8000:8000 myapp:latest
           # Add your deployment commands here, e.g., using Docker or a cloud provide's
